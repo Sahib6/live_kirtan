@@ -44,3 +44,9 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+#ios related files
+ios/Flutter/AppFrameworkInfo.plist
+ios/Runner.xcodeproj/project.pbxproj
+ios/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme
+pubspec.lock
