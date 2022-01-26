@@ -1,23 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:live_kirtan/helper/screenProvider.dart';
+import 'package:provider/provider.dart';
 import 'constants.dart';
 
-class NavigationDrawer extends StatefulWidget {
-
-  @override
-  State<NavigationDrawer> createState() => _NavigationDrawerState();
-}
-
-class _NavigationDrawerState extends State<NavigationDrawer> {
-  int _selectedIndex = 0;
+class NavigationDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
     final double _screenWidth = getWidth(context);
     final double _screenHeight = getHeight(context);
 
+    var provider = Provider.of<ScreenProvider>(context);
     return Container(
       width: _screenWidth * 0.85,
-      padding: EdgeInsets.only(left: 10.0),
+      // padding: EdgeInsets.only(left: 10.0),
       color: Color(0xffF0D986),
       child: ListView(
         padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
@@ -39,7 +35,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
           ),
           for (int i = 0; i < navDrawerItems.length; i++)
             Container(
-              color: (i == _selectedIndex)
+              color: (i == provider.selectedIndex)
                   ? Color(0xffd9aa50)
                   : Color(0xffF0D986),
               child: Column(
@@ -47,7 +43,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.all(5.0),
+                    padding: const EdgeInsets.only(left: 15.0, right: 5.0, top: 5.0, bottom: 5.0),
                     child: InkWell(
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -58,7 +54,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                                 fontWeight: FontWeight.bold, fontSize: 17.0),
                           ),
                           Image.asset(
-                            (i == _selectedIndex)
+                            (i == provider.selectedIndex)
                                 ? 'images/three_lines1.png'
                                 : 'images/three_line.png',
                             width: 30,
@@ -66,11 +62,10 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                           )
                         ],
                       ),
-                      onTap: (){
-                        setState(() {
-                          _selectedIndex = i;
-                        });
-                      },
+                      onTap: () {
+                        provider.lastIndex = provider.selectedIndex;
+                        provider.changeIndex(i);
+                      }
                     ),
                   ),
                   Container(
