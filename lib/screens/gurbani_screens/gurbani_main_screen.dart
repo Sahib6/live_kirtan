@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:live_kirtan/helper/constants.dart';
+import 'package:live_kirtan/helper/gurbani_provider.dart';
+import 'package:provider/provider.dart';
 
 class GurbaniMainScreen extends StatelessWidget {
   const GurbaniMainScreen({Key key}) : super(key: key);
@@ -38,7 +41,13 @@ class FirstHalf extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(
+                        context,
+                        gurbanis[
+                            Provider.of<GurbaniProvider>(context, listen: false)
+                                .selectedGurbaniIndex]);
+                  },
                   child: Text(
                     'Read Bani',
                     style: TextStyle(fontWeight: FontWeight.bold),
@@ -63,24 +72,15 @@ class FirstHalf extends StatelessWidget {
 }
 
 class SecondHalf extends StatelessWidget {
-  List<String> gurbanis = [
-    'Japji Sahib',
-    'Jaap Sahib',
-    'Tav Prasad Savayiye',
-    'Chaupayi Sahib',
-    'Anand Sahib',
-    'Asa Di Vaar',
-    'Sukhmani Sahib',
-    'Rehras Sahib',
-    'Sohaila',
-    'Ardaas'
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Container(
       color: Colors.white,
       child: CupertinoPicker(
+        onSelectedItemChanged: (index) {
+          Provider.of<GurbaniProvider>(context, listen: false)
+              .selectedGurbaniIndexChange = index;
+        },
         itemExtent: 35.0,
         children: [
           for (var items in gurbanis)

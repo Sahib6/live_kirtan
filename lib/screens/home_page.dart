@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:live_kirtan/helper/common_widgets.dart';
 import 'package:live_kirtan/helper/constants.dart';
 import 'package:live_kirtan/helper/navigation_drawer.dart';
 import 'package:live_kirtan/helper/screenProvider.dart';
@@ -13,22 +14,18 @@ class HomePage extends StatelessWidget {
     final _key = GlobalKey<ScaffoldState>();
     return Scaffold(
         key: _key,
-        appBar: AppBar(
-          leading: InkWell(
-            child: SizedBox(
-                width: _screenHeight * 0.046, height: _screenHeight * 0.046),
-            onTap: () => _key.currentState.openDrawer(),
-          ),
-          backgroundColor: Color(0xffd09c3f),
-          flexibleSpace: Container(
-            margin: EdgeInsets.only(top: _screenHeight * 0.076),
-            width: _screenWidth,
-            decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage("images/appbar_bkg.png"),
-                    fit: BoxFit.fill)),
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(55),
+          child: CommonAppBar(
+            leading: InkWell(
+              child: SizedBox(
+                  width: _screenHeight * 0.046, height: _screenHeight * 0.046),
+              onTap: () => _key.currentState.openDrawer(),
+            ),
             child: (provider.selectedIndex == 0 ||
-                    ((provider.selectedIndex == 2 || provider.selectedIndex == 5) && provider.lastIndex == 0))
+                    ((provider.selectedIndex == 2 ||
+                            provider.selectedIndex == 5) &&
+                        provider.lastIndex == 0))
                 ? Row(mainAxisAlignment: MainAxisAlignment.end, children: [
                     InkWell(
                         child: Image.asset(
@@ -40,7 +37,8 @@ class HomePage extends StatelessWidget {
                   ])
                 : Center(
                     child: Text(
-                      (provider.selectedIndex != 2 && provider.selectedIndex != 5)
+                      (provider.selectedIndex != 2 &&
+                              provider.selectedIndex != 5)
                           ? navDrawerItems[provider.selectedIndex]
                           : navDrawerItems[provider.lastIndex],
                       style: TextStyle(

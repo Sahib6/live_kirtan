@@ -1,7 +1,7 @@
 import 'dart:core';
 
 import 'package:flutter/cupertino.dart';
-import 'package:live_kirtan/screens/gurbani_main_screen.dart';
+import 'package:live_kirtan/screens/gurbani_screens/gurbani_main_screen.dart';
 import 'package:live_kirtan/screens/hukamnama_screen.dart';
 import 'package:live_kirtan/screens/live_kirtan_screen.dart';
 import 'package:live_kirtan/screens/other_banis_main_screen.dart';
@@ -30,7 +30,6 @@ List<String> navDrawerItems = [
   "Favorites",
   "Kirtan Duties",
   "Jantri",
-
 ];
 
 List screens = [
@@ -48,4 +47,17 @@ List screens = [
   LiveKirtanScreen(),
   LiveKirtanScreen(),
   LiveKirtanScreen(),
+];
+
+List<String> gurbanis = [
+  'Japji Sahib',
+  'Jaap Sahib',
+  'Tav Prasad Savayiye',
+  'Chaupayi Sahib',
+  'Anand Sahib',
+  'Asa Di Vaar',
+  'Sukhmani Sahib',
+  'Rehras Sahib',
+  'Sohaila',
+  'Ardaas'
 ];
