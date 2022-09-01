@@ -15,7 +15,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
         key: _key,
         appBar: PreferredSize(
-          preferredSize: Size.fromHeight(55),
+          preferredSize: Size.fromHeight(getHeight(context) * 0.065),
           child: CommonAppBar(
             leading: InkWell(
               child: SizedBox(

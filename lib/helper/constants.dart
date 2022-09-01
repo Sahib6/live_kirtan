@@ -7,6 +7,9 @@ import 'package:live_kirtan/screens/live_kirtan_screen.dart';
 import 'package:live_kirtan/screens/other_banis_main_screen.dart';
 import 'package:live_kirtan/screens/sri_guru_granth_sahib_ji_main_screen.dart';
 
+// Height : 844.0
+// Width : 390.0
+
 double getHeight(BuildContext context) {
   return MediaQuery.of(context).size.height;
 }
